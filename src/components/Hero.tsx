@@ -1,6 +1,7 @@
 import { ArrowDown, ExternalLink, Mail } from 'lucide-react';
 import { personal } from '../data/content';
 import NeuralViz from './NeuralViz';
+import { scrollToSection } from '../utils/scroll';
 
 export default function Hero() {
   return (
@@ -39,6 +40,10 @@ export default function Hero() {
             <div className="flex flex-wrap gap-3 mb-10">
               <a
                 href="#research"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('research');
+                }}
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-navy-900 rounded-lg font-semibold text-sm hover:bg-white transition-colors"
               >
                 Explore My Work
@@ -46,6 +51,10 @@ export default function Hero() {
               </a>
               <a
                 href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('contact');
+                }}
                 className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/15 text-slate-text rounded-lg font-semibold text-sm hover:border-accent/40 hover:text-accent transition-colors"
               >
                 Get in Touch
