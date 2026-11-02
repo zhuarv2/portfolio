@@ -123,7 +123,7 @@ export const research: ResearchProject[] = [
     ],
     status: 'TEKNOFEST 2024 AI in Health Critical Design Report (KRİTİK TASARIM RAPORU)',
     tags: ['Medical Imaging', 'Semantic Segmentation', 'ResUNet++', 'CVC-ClinicDB', 'PyTorch'],
-    pdfFile: '/research-papers/research1.pdf',
+    pdfFile: './research-papers/research1.pdf',
     codeUrl: null,
     references: [
       'Bernal et al. (2015). WM-DOVA Maps for Accurate Polyp Highlighting in Colonoscopy Videos. CMIG.',
@@ -205,7 +205,7 @@ export const research: ResearchProject[] = [
     ],
     status: 'TEKNOFEST 2024 AI in Health Critical Report (KRİTİK TASARIM RAPORU)',
     tags: ['Chest X-Ray', 'Landmark Regression', 'MobileNetV2', 'Cardiothoracic Ratio', 'Transfer Learning'],
-    pdfFile: '/research-papers/research2.pdf',
+    pdfFile: './research-papers/research2.pdf',
     codeUrl: null,
     references: [
       'Sandler et al. (2018). MobileNetV2: Inverted Residuals and Linear Bottlenecks. CVPR.',
@@ -285,7 +285,7 @@ export const research: ResearchProject[] = [
     ],
     status: 'TEKNOFEST 2024 AI in Health Proje Sunum Raporu (CRITICAL DESIGN REPORT)',
     tags: ['ECG Signal Processing', 'TCN', '1D-CNN', 'PTB-XL', 'Temporal Attention'],
-    pdfFile: '/research-papers/research3.pdf',
+    pdfFile: './research-papers/research3.pdf',
     codeUrl: null,
     references: [
       'Wagner et al. (2020). PTB-XL, a large publicly available electrocardiography dataset. Scientific Data.',
@@ -369,7 +369,7 @@ export const research: ResearchProject[] = [
     ],
     status: 'TEKNOFEST 2024 AI in Health Proje Detay Raporu (DETAIL REPORT)',
     tags: ['ECG Classification', 'AFIB & AFL', 'LBBB & RBBB', 'TCN-CNN', 'Gradient Saliency'],
-    pdfFile: '/research-papers/research4.pdf',
+    pdfFile: './research-papers/research4.pdf',
     codeUrl: null,
     references: [
       'Bai et al. (2018). An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling.',
