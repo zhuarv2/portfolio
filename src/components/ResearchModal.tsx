@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import {
   X,
   FileText,
@@ -48,7 +49,7 @@ export default function ResearchModal({ project, onClose }: ResearchModalProps) 
 
   if (!project) return null;
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-navy-950/85 backdrop-blur-md overflow-y-auto animate-fade-in"
       role="dialog"
@@ -362,6 +363,7 @@ export default function ResearchModal({ project, onClose }: ResearchModalProps) 
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

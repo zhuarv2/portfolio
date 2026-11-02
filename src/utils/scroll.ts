@@ -24,6 +24,10 @@ export function scrollToSection(targetId: string, duration = 750) {
   // Trigger DOM reflow to restart CSS animation reliably
   void element.offsetWidth;
   element.classList.add('section-slide-animate');
+  // Clean up animation class once finished
+  setTimeout(() => {
+    element.classList.remove('section-slide-animate');
+  }, 800);
 
   function step(currentTime: number) {
     const elapsed = currentTime - startTime;

@@ -64,8 +64,7 @@
   }
 
   .section-slide-animate {
-    animation: sectionSlideEaseOut 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    will-change: transform, opacity;
+    animation: sectionSlideEaseOut 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
 

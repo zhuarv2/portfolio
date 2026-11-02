@@ -47,7 +47,7 @@ export default function Research() {
           </h2>
           <p className="mt-3 text-slate-muted max-w-2xl leading-relaxed text-sm sm:text-base">
             Hands-on biomedical deep learning investigations developed for the TEKNOFEST AI in Health competitions.
-            Click any study to review the complete 11-part research brief including verified methodology, metrics, and individual contributions.
+            Click any study to review the complete research brief including verified methodology, metrics, and individual contributions.
           </p>
         </div>
 
