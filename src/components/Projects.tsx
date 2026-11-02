@@ -11,9 +11,6 @@ export default function Projects() {
         <div className="mb-12">
           <p className="section-label mb-3">Software Development</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Featured Software Engineering Project</h2>
-          <p className="mt-3 text-slate-muted max-w-xl text-sm sm:text-base">
-            Demonstrating the discipline of turning ideas into functional, deployed, and maintainable web software.
-          </p>
         </div>
 
         {/* Featured card — full width editorial layout */}

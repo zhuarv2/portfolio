@@ -24,35 +24,37 @@ export default function About() {
     <section id="about" className="py-24 relative">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-start">
-          {/* Left */}
+          {/* Left: Bio & Profile */}
           <div>
             <p className="section-label mb-4">About</p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6 leading-snug">
-              A student, a researcher in progress, and a builder.
-            </h2>
-            <div className="space-y-4 text-slate-muted leading-relaxed">
+
+            <div className="flex flex-col sm:flex-row items-start gap-5 mb-6">
+              <div className="relative group shrink-0">
+                <div className="absolute -inset-0.5 bg-accent/20 rounded-2xl blur-sm opacity-60 group-hover:opacity-100 transition duration-300" />
+                <img
+                  src={personal.avatar}
+                  alt={personal.name}
+                  className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover border border-white/10 shadow-xl"
+                />
+              </div>
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-2 leading-snug">
+                  A student, researcher in progress, and builder.
+                </h2>
+                <p className="text-xs font-mono text-accent">
+                  {personal.location} · {personal.scholarship}
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3.5 text-slate-muted leading-relaxed text-sm sm:text-base">
               <p>
-                I'm {personal.name}, a high school student at{' '}
-                <span className="text-white">{personal.school}</span> in {personal.location}. As a{' '}
-                <span className="text-white">{personal.scholarship}</span>, I've had the support to
-                pursue serious learning alongside my studies.
+                I'm <span className="text-white font-medium">{personal.name}</span>, a high school student at{' '}
+                <span className="text-white">{personal.school}</span>. Supported by the{' '}
+                <span className="text-white">{personal.scholarship}</span>, I pursue machine learning alongside my studies.
               </p>
               <p>
-                My interest in machine learning started with curiosity about how computers could learn
-                to recognize patterns and make decisions. That curiosity has grown into hands-on
-                research: I've participated in two TEKNOFEST AI competition projects focused on
-                medical imaging and clinical signal analysis, working in small teams on real datasets
-                and real evaluation metrics.
-              </p>
-              <p>
-                Beyond research, I build software to practice turning ideas into working products.
-                Trainer App is my most complete example of that — a web application I built and
-                deployed, accessible to anyone on the web.
-              </p>
-              <p>
-                I am still early in this journey. My goal is to develop deeper mathematical
-                understanding of the models I work with and to contribute meaningfully to AI research
-                over time.
+                My work centers on biomedical deep learning through TEKNOFEST AI competitions and building practical software like Trainer App. I aim to develop deeper mathematical foundations and contribute meaningfully to AI research.
               </p>
             </div>
           </div>

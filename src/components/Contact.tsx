@@ -7,12 +7,9 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-2xl">
           <p className="section-label mb-4">Contact & Connect</p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-white">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-8 text-white">
             Get in Touch
           </h2>
-          <p className="text-slate-muted leading-relaxed mb-10 text-base sm:text-lg">
-            "I'm always interested in learning from people who build, research, and think about AI."
-          </p>
 
           <div className="flex flex-col gap-4">
             {/* Email (Real mailto link) */}

@@ -41,6 +41,7 @@ export interface ResearchProject {
 export const personal = {
   name: 'Farouq Hafizhuddin',
   initials: 'FH',
+  avatar: './farouq-pfp.jpeg',
   role: 'High School Student · Aspiring ML Researcher',
   location: 'Kayseri, Türkiye',
   school: 'Uluslararası Kayseri İlahiyat Vakfı Anadolu İHL',
@@ -415,9 +416,10 @@ export const projects = [
 
 export const skills = {
   programming: [
-    { name: 'Python', note: 'Primary research language — PyTorch, NumPy, SciPy, custom training loops, and data pipelines' },
-    { name: 'JavaScript (ES6+) & TypeScript', note: 'Interactive web applications, DOM APIs, async/await, and typed frontend components' },
-    { name: 'HTML5 & Modern CSS3', note: 'Semantic structure, CSS custom properties, responsive layout design, and light/dark theming' },
+    { name: 'Python', note: 'Core research language — PyTorch, NumPy, SciPy, custom training loops, and data pipelines' },
+    { name: 'TypeScript', note: 'Type-safe component architecture, interface modeling, and modern web applications' },
+    { name: 'JavaScript (ES6+)', note: 'Asynchronous logic, DOM APIs, Service Workers, and client-side architecture' },
+    { name: 'HTML5 & Modern CSS3', note: 'Semantic web structure, responsive layouts, Tailwind CSS, and theme engines' },
   ],
   ml: [
     { name: 'Convolutional Neural Networks (CNNs)', note: '1D CNNs for biosignals and 2D CNNs for medical imagery' },
