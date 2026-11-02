@@ -51,7 +51,7 @@ export default function ResearchModal({ project, onClose }: ResearchModalProps) 
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-navy-950/85 backdrop-blur-md overflow-y-auto animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-navy-950/85 backdrop-blur-md overflow-y-auto animate-fade-in modal-scrollbar"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-research-title"
@@ -128,7 +128,7 @@ export default function ResearchModal({ project, onClose }: ResearchModalProps) 
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 sm:p-8 space-y-8 overflow-y-auto text-slate-text">
+        <div className="p-6 sm:p-8 space-y-8 overflow-y-auto text-slate-text modal-scrollbar">
           {/* Header Title Section */}
           <div className="border-b border-white/5 pb-6">
             <p className="text-xs font-mono text-accent uppercase tracking-wider mb-2">

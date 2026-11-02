@@ -34,6 +34,48 @@
     color: #F1F5F9;
   }
 
+  /* Custom Scrollbars (Global / Firefox) */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(56, 189, 248, 0.25) transparent;
+  }
+
+  html {
+    scrollbar-color: rgba(56, 189, 248, 0.25) #0B1020;
+  }
+
+  /* WebKit & Chromium Custom Scrollbars (Global) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0B1020;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 9999px;
+    border: 2px solid #0B1020;
+    background-clip: padding-box;
+    transition: background-color 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.55);
+    border: 2px solid #0B1020;
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: rgba(56, 189, 248, 0.85);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     * {
       animation-duration: 0.01ms !important;
@@ -65,6 +107,35 @@
 
   .section-slide-animate {
     animation: sectionSlideEaseOut 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Sleek Modal-Specific Scrollbar */
+  .modal-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(56, 189, 248, 0.3) transparent;
+  }
+
+  .modal-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .modal-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 8px 0;
+  }
+
+  .modal-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, 0.25);
+    border-radius: 9999px;
+    transition: background-color 0.2s ease;
+  }
+
+  .modal-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.65);
+  }
+
+  .modal-scrollbar::-webkit-scrollbar-thumb:active {
+    background: rgba(56, 189, 248, 0.95);
   }
 }
 
