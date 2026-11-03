@@ -7,13 +7,13 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
       {/* Background grid */}
-      <div className="absolute inset-0 grid-bg opacity-60 pointer-events-none" />
+      <div className="absolute inset-0 grid-bg opacity-35 pointer-events-none" />
       {/* Subtle radial glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 20% 50%, rgba(56,189,248,0.06) 0%, transparent 70%)',
+            'radial-gradient(ellipse 80% 60% at 20% 50%, rgb(var(--color-accent) / 0.08) 0%, transparent 70%)',
         }}
       />
 

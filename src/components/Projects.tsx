@@ -6,8 +6,15 @@ export default function Projects() {
   const p = projects[0];
 
   return (
-    <section id="projects" className="py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="projects" className="py-24 relative overflow-hidden">
+      {/* Soft localized ambient glow */}
+      <div
+        className="absolute bottom-0 left-0 w-[550px] h-[550px] translate-y-1/3 -translate-x-1/3 pointer-events-none rounded-full blur-[130px] opacity-35"
+        style={{
+          background: 'radial-gradient(circle, var(--ambient-orb-2) 0%, transparent 70%)',
+        }}
+      />
+      <div className="relative max-w-6xl mx-auto px-6">
         <div className="mb-12">
           <p className="section-label mb-3">Software Development</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Featured Software Engineering Project</h2>

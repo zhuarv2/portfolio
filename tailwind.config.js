@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -8,20 +9,20 @@ export default {
     extend: {
       colors: {
         navy: {
-          950: '#060d1a',
-          900: '#0B1020',
-          800: '#121A2B',
-          700: '#1a2540',
-          600: '#243055',
+          950: 'rgb(var(--color-navy-950) / <alpha-value>)',
+          900: 'rgb(var(--color-navy-900) / <alpha-value>)',
+          800: 'rgb(var(--color-navy-800) / <alpha-value>)',
+          700: 'rgb(var(--color-navy-700) / <alpha-value>)',
+          600: 'rgb(var(--color-navy-600) / <alpha-value>)',
         },
         slate: {
-          text: '#F1F5F9',
-          muted: '#A0AEC0',
+          text: 'rgb(var(--color-slate-text) / <alpha-value>)',
+          muted: 'rgb(var(--color-slate-muted) / <alpha-value>)',
         },
         accent: {
-          DEFAULT: '#38BDF8',
-          dim: '#0EA5E9',
-          glow: 'rgba(56,189,248,0.15)',
+          DEFAULT: 'rgb(var(--color-accent) / <alpha-value>)',
+          dim: 'rgb(var(--color-accent-dim) / <alpha-value>)',
+          glow: 'var(--color-accent-glow)',
         },
       },
       fontFamily: {

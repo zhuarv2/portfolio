@@ -2,6 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Default: Editorial AI Research Lab Dark Mode */
+  --color-navy-950: 6 13 26;          /* #060d1a */
+  --color-navy-900: 11 16 32;         /* #0B1020 */
+  --color-navy-800: 18 26 43;         /* #121A2B */
+  --color-navy-700: 26 37 64;         /* #1a2540 */
+  --color-navy-600: 36 48 85;         /* #243055 */
+  --color-slate-text: 241 245 249;    /* #F1F5F9 */
+  --color-slate-muted: 160 174 192;   /* #A0AEC0 */
+  --color-accent: 56 189 248;         /* #38BDF8 */
+  --color-accent-dim: 14 165 233;     /* #0EA5E9 */
+  --color-accent-glow: rgba(56, 189, 248, 0.15);
+  --grid-line: rgba(56, 189, 248, 0.05);
+  --pattern-dot: rgba(56, 189, 248, 0.18);
+  --ambient-orb-1: rgba(56, 189, 248, 0.12);
+  --ambient-orb-2: rgba(99, 102, 241, 0.10);
+  --ambient-orb-3: rgba(56, 189, 248, 0.11);
+}
+
+html.light {
+  color-scheme: light;
+  /* Editorial Academic Light Mode */
+  --color-navy-950: 241 245 249;      /* Slate-100: header bar inside cards, code backgrounds */
+  --color-navy-900: 248 250 252;      /* Slate-50: main page base background (#F8FAFC) */
+  --color-navy-800: 234 240 246;      /* Slate-150 / Soft ice slate: alternating section background! (#EAF0F6) */
+  --color-navy-700: 226 232 240;      /* Slate-200 */
+  --color-navy-600: 203 213 225;      /* Slate-300 */
+  --color-slate-text: 15 23 42;       /* Slate-900: high contrast text */
+  --color-slate-muted: 80 95 115;     /* Slate-600: readable secondary text */
+  --color-accent: 2 132 199;          /* Sky-600: rich electric cyan-blue */
+  --color-accent-dim: 3 105 161;      /* Sky-700 */
+  --color-accent-glow: rgba(2, 132, 199, 0.16);
+  --grid-line: rgba(2, 132, 199, 0.08);
+  --pattern-dot: rgba(15, 23, 42, 0.12);
+  --ambient-orb-1: rgba(2, 132, 199, 0.09);
+  --ambient-orb-2: rgba(59, 130, 246, 0.08);
+  --ambient-orb-3: rgba(2, 132, 199, 0.085);
+}
+
 @layer base {
   * {
     scroll-behavior: smooth;
@@ -12,11 +51,12 @@
   }
 
   body {
-    background-color: #0B1020;
-    color: #F1F5F9;
+    background-color: rgb(var(--color-navy-900));
+    color: rgb(var(--color-slate-text));
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   section[id] {
@@ -85,6 +125,145 @@
   }
 }
 
+/* Light Mode Overrides */
+html.light body {
+  background-color: #F8FAFC;
+  color: #0F172A;
+}
+
+/* Alternating section backgrounds in light mode */
+html.light section.bg-navy-800\/40,
+html.light section.bg-navy-800\/35,
+html.light section.bg-navy-800\/30,
+html.light section.bg-navy-800\/25,
+html.light section.bg-navy-800\/20 {
+  background-color: #EEF3F8 !important;
+}
+
+/* Light mode cards: solid pure white with sharp contrast, crisp border and elevation shadow */
+html.light article,
+html.light .card-border,
+html.light .rounded-xl.border,
+html.light .rounded-2xl.border {
+  background-color: #FFFFFF !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04) !important;
+}
+
+html.light article:hover,
+html.light .rounded-xl.border:hover,
+html.light .rounded-2xl.border:hover {
+  border-color: rgba(2, 132, 199, 0.45) !important;
+  box-shadow: 0 10px 25px -4px rgba(2, 132, 199, 0.14), 0 4px 10px -2px rgba(15, 23, 42, 0.06) !important;
+}
+
+/* Light mode card interior badges (Verified Result, Specs, App Mockups) */
+html.light .bg-navy-900\/70,
+html.light .bg-navy-900\/60 {
+  background-color: #F1F5F9 !important;
+  border-color: rgba(15, 23, 42, 0.09) !important;
+}
+
+html.light .bg-navy-950\/90,
+html.light .bg-navy-950\/80 {
+  background-color: #F8FAFC !important;
+  border-color: rgba(15, 23, 42, 0.09) !important;
+}
+
+/* Light mode section dividers */
+html.light .via-white\/5,
+html.light .via-white\/10 {
+  --tw-gradient-stops: var(--tw-gradient-from), rgba(15, 23, 42, 0.1), var(--tw-gradient-to) !important;
+}
+
+html.light .text-white {
+  color: #0F172A;
+}
+
+html.light .hover\:text-white:hover {
+  color: #0F172A;
+}
+
+html.light .group:hover .group-hover\:text-white {
+  color: #0F172A;
+}
+
+html.light .bg-accent,
+html.light .bg-accent * {
+  color: #FFFFFF !important;
+}
+
+html.light .border-white\/5 {
+  border-color: rgba(15, 23, 42, 0.06);
+}
+
+html.light .border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+html.light .border-white\/15 {
+  border-color: rgba(15, 23, 42, 0.15);
+}
+
+html.light .border-white\/20 {
+  border-color: rgba(15, 23, 42, 0.2);
+}
+
+html.light .bg-white\/5 {
+  background-color: rgba(15, 23, 42, 0.04);
+}
+
+html.light .bg-white\/10 {
+  background-color: rgba(15, 23, 42, 0.07);
+}
+
+html.light .hover\:bg-white\/5:hover {
+  background-color: rgba(15, 23, 42, 0.06);
+}
+
+html.light .hover\:bg-white\/10:hover {
+  background-color: rgba(15, 23, 42, 0.09);
+}
+
+html.light .hover\:bg-white\/15:hover {
+  background-color: rgba(15, 23, 42, 0.12);
+}
+
+html.light .shadow-xl,
+html.light .shadow-2xl {
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+}
+
+html.light {
+  scrollbar-color: rgba(2, 132, 199, 0.35) #F8FAFC;
+}
+
+html.light * {
+  scrollbar-color: rgba(2, 132, 199, 0.3) transparent;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.18);
+  border: 2px solid #F8FAFC;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: rgba(2, 132, 199, 0.6);
+  border: 2px solid #F8FAFC;
+}
+
+html.light .modal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(2, 132, 199, 0.3);
+}
+
+html.light .modal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(2, 132, 199, 0.7);
+}
+
 @layer components {
   .section-label {
     @apply text-xs font-mono tracking-widest text-accent uppercase opacity-70;
@@ -103,6 +282,25 @@
 
   .tag {
     @apply inline-block px-2.5 py-1 text-xs font-mono bg-accent/10 text-accent border border-accent/20 rounded-md;
+  }
+
+  /* Precision ambient dot matrix pattern */
+  .ambient-dot-pattern {
+    background-image: radial-gradient(var(--pattern-dot) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse 90% 90% at 50% 40%, black 45%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 40%, black 45%, transparent 100%);
+  }
+
+  /* Soft diffused ambient glow orb */
+  .ambient-glow-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(85px);
+    pointer-events: none;
+    transform: translateZ(0);
+    will-change: opacity;
+    transition: opacity 0.3s ease;
   }
 
   .section-slide-animate {

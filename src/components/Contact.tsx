@@ -3,8 +3,15 @@ import { personal } from '../data/content';
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 bg-navy-800/20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="contact" className="py-24 bg-navy-800/35 relative overflow-hidden">
+      {/* Soft ambient glow */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none rounded-full blur-[140px] opacity-35"
+        style={{
+          background: 'radial-gradient(circle, var(--ambient-orb-3) 0%, transparent 70%)',
+        }}
+      />
+      <div className="relative max-w-6xl mx-auto px-6">
         <div className="max-w-2xl">
           <p className="section-label mb-4">Contact & Connect</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-8 text-white">

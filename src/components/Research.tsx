@@ -38,8 +38,15 @@ export default function Research() {
   };
 
   return (
-    <section id="research" className="py-24 bg-navy-800/30">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="research" className="py-24 bg-navy-800/35 relative overflow-hidden">
+      {/* Soft localized ambient glow */}
+      <div
+        className="absolute top-1/2 right-0 w-[500px] h-[500px] -translate-y-1/2 translate-x-1/3 pointer-events-none rounded-full blur-[120px] opacity-40"
+        style={{
+          background: 'radial-gradient(circle, var(--ambient-orb-1) 0%, transparent 70%)',
+        }}
+      />
+      <div className="relative max-w-6xl mx-auto px-6">
         <div className="mb-12">
           <p className="section-label mb-3">Research</p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">

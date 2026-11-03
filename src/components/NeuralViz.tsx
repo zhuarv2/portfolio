@@ -1,25 +1,22 @@
 export default function NeuralViz() {
   const layers = [
-    { x: 60, nodes: 3 },
-    { x: 160, nodes: 5 },
-    { x: 260, nodes: 5 },
-    { x: 360, nodes: 4 },
-    { x: 440, nodes: 2 },
+    { x: 55, nodes: 3, label: 'Input' },
+    { x: 150, nodes: 5, label: 'Conv2D' },
+    { x: 245, nodes: 5, label: 'ResBlock' },
+    { x: 340, nodes: 4, label: 'Attention' },
+    { x: 435, nodes: 2, label: 'Output' },
   ];
 
   const nodeRadius = 7;
-  const svgHeight = 280;
-  const accentColor = '#38BDF8';
-  const dimColor = 'rgba(56,189,248,0.18)';
-  const lineColor = 'rgba(56,189,248,0.10)';
+  const svgHeight = 250;
 
   // Compute node positions
   const nodePositions = layers.map((layer) => {
     const positions = [];
-    const spread = (layer.nodes - 1) * 40;
+    const spread = (layer.nodes - 1) * 36;
     const startY = (svgHeight - spread) / 2;
     for (let i = 0; i < layer.nodes; i++) {
-      positions.push({ x: layer.x, y: startY + i * 40 });
+      positions.push({ x: layer.x, y: startY + i * 36 });
     }
     return positions;
   });
@@ -34,113 +31,141 @@ export default function NeuralViz() {
     }
   }
 
-  // Highlight a few connections
-  const highlightedLayerPairs = [[1, 1], [2, 2], [3, 1]];
+  // Active signal path through the network
+  const activePath = [
+    { layer: 0, node: 1 },
+    { layer: 1, node: 2 },
+    { layer: 2, node: 2 },
+    { layer: 3, node: 1 },
+    { layer: 4, node: 0 },
+  ];
 
   return (
     <div className="relative w-full max-w-[500px] select-none">
-      {/* Outer frame */}
-      <div className="rounded-2xl border border-white/5 bg-navy-800/50 p-6 backdrop-blur-sm">
-        <div className="text-xs font-mono text-slate-muted/50 mb-4 flex justify-between">
-          <span>neural_network.py</span>
-          <span className="text-accent/50">▶ training</span>
+      {/* Outer editor frame */}
+      <div className="rounded-2xl border border-white/10 bg-navy-800/80 p-5 sm:p-6 backdrop-blur-md shadow-2xl transition-colors">
+        {/* IDE Header bar */}
+        <div className="text-xs font-mono mb-4 flex items-center justify-between pb-3 border-b border-white/5">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+            <span className="ml-1.5 text-slate-muted font-medium">resunet_model.py</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-accent/10 border border-accent/25 text-accent font-semibold text-[11px]">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+              forward pass
+            </span>
+          </div>
         </div>
+
+        {/* Neural Network SVG Diagram */}
         <svg
-          viewBox="0 0 500 280"
+          viewBox="0 0 490 250"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full"
-          aria-label="Abstract neural network diagram"
+          className="w-full overflow-visible"
+          aria-label="Interactive neural network architecture diagram"
           role="img"
         >
-          {/* Background lines */}
-          {connections.map((c, i) => (
-            <line
-              key={i}
-              x1={c.x1}
-              y1={c.y1}
-              x2={c.x2}
-              y2={c.y2}
-              stroke={lineColor}
-              strokeWidth="0.8"
-            />
-          ))}
-          {/* Highlighted connections */}
-          {highlightedLayerPairs.map(([li, ni], idx) => {
-            if (!nodePositions[li] || !nodePositions[li][ni] || !nodePositions[li + 1] || !nodePositions[li + 1][ni]) return null;
-            const a = nodePositions[li][ni];
-            const b = nodePositions[li + 1][ni];
+          {/* Base connection lines */}
+          <g className="stroke-slate-muted/20" strokeWidth="0.8">
+            {connections.map((c, i) => (
+              <line key={i} x1={c.x1} y1={c.y1} x2={c.x2} y2={c.y2} />
+            ))}
+          </g>
+
+          {/* Active forward-pass signal connections */}
+          {activePath.slice(0, -1).map((step, idx) => {
+            const next = activePath[idx + 1];
+            const a = nodePositions[step.layer][step.node];
+            const b = nodePositions[next.layer][next.node];
             return (
               <line
-                key={`h${idx}`}
+                key={`active-${idx}`}
                 x1={a.x}
                 y1={a.y}
                 x2={b.x}
                 y2={b.y}
-                stroke={accentColor}
-                strokeWidth="1.2"
-                opacity="0.4"
+                className="stroke-accent"
+                strokeWidth="1.8"
+                strokeOpacity="0.85"
               />
             );
           })}
+
           {/* Nodes */}
           {nodePositions.map((layer, li) =>
             layer.map((node, ni) => {
-              const isAccent = li === 2 && ni === 2;
+              const isActive = activePath.some((p) => p.layer === li && p.node === ni);
+
               return (
                 <g key={`${li}-${ni}`}>
-                  <circle
-                    cx={node.x}
-                    cy={node.y}
-                    r={nodeRadius + 3}
-                    fill={isAccent ? 'rgba(56,189,248,0.12)' : 'transparent'}
-                  />
+                  {/* Outer glow ring for active nodes */}
+                  {isActive && (
+                    <circle
+                      cx={node.x}
+                      cy={node.y}
+                      r={nodeRadius + 4}
+                      className="fill-accent/20 animate-pulse"
+                    />
+                  )}
+
+                  {/* Core node */}
                   <circle
                     cx={node.x}
                     cy={node.y}
                     r={nodeRadius}
-                    fill={isAccent ? accentColor : dimColor}
-                    stroke={isAccent ? accentColor : 'rgba(56,189,248,0.3)'}
-                    strokeWidth="1"
+                    className={
+                      isActive
+                        ? 'fill-accent stroke-accent'
+                        : 'fill-navy-900 stroke-accent/40'
+                    }
+                    strokeWidth={isActive ? '1.5' : '1.2'}
                   />
                 </g>
               );
             })
           )}
-          {/* Layer labels */}
-          {['Input', 'Hidden', 'Hidden', 'Hidden', 'Output'].map((label, i) => (
+
+          {/* Layer labels at bottom */}
+          {layers.map((layer, i) => (
             <text
-              key={label + i}
-              x={layers[i].x}
-              y={svgHeight - 8}
+              key={layer.label + i}
+              x={layer.x}
+              y={svgHeight - 4}
               textAnchor="middle"
-              fontSize="9"
-              fill="rgba(160,174,192,0.4)"
-              fontFamily="JetBrains Mono, monospace"
+              className="fill-slate-muted font-mono text-[10px] font-medium"
             >
-              {label}
+              {layer.label}
             </text>
           ))}
         </svg>
 
-        {/* Inline code snippet */}
-        <div className="mt-4 text-xs font-mono space-y-1">
-          <p>
-            <span className="text-accent/60">loss</span>{' '}
-            <span className="text-white/30">=</span>{' '}
-            <span className="text-slate-muted/60">criterion(output, target)</span>
+        {/* Code Snippet Box */}
+        <div className="mt-4 p-3 rounded-xl bg-navy-950/70 border border-white/5 text-xs font-mono space-y-1">
+          <div className="flex items-center justify-between text-[11px]">
+            <p>
+              <span className="text-accent font-semibold">y_pred</span>{' '}
+              <span className="text-slate-muted">=</span>{' '}
+              <span className="text-slate-text">model(x_batch)</span>
+            </p>
+            <span className="text-[10px] text-accent font-mono font-semibold">IoU: 90.27%</span>
+          </div>
+          <p className="text-[11px]">
+            <span className="text-accent font-semibold">loss</span>{' '}
+            <span className="text-slate-muted">=</span>{' '}
+            <span className="text-slate-muted">criterion(y_pred, y_true)</span>
           </p>
-          <p>
-            <span className="text-accent/60">loss</span>
-            <span className="text-white/30">.backward()</span>
-          </p>
-          <p>
-            <span className="text-slate-muted/40">optimizer.step()</span>
+          <p className="text-[11px] text-slate-muted/70">
+            optimizer.step()
           </p>
         </div>
       </div>
-      {/* Floating label */}
-      <div className="absolute -top-3 -right-3 text-xs font-mono px-2 py-1 bg-accent/10 text-accent border border-accent/20 rounded-md">
-        PyTorch · CNN
+
+      {/* Floating top badge */}
+      <div className="absolute -top-3 -right-3 text-xs font-mono px-2.5 py-1 bg-accent/15 text-accent border border-accent/30 rounded-lg font-semibold shadow-lg backdrop-blur-sm">
+        PyTorch · ResUNet++
       </div>
     </div>
   );

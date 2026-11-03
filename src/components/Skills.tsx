@@ -9,7 +9,7 @@ const categories = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 bg-navy-800/20">
+    <section id="skills" className="py-24 bg-navy-800/35 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-12">
           <p className="section-label mb-3">Skills</p>
